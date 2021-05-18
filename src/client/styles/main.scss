@@ -57,7 +57,14 @@ main{
 .search_button{
     background-color: orange;
     padding:0.5rem;
+    box-shadow: 3px 5px gray ;
 }
+
+.search_button:hover{
+    background-color: yellowgreen;
+  box-shadow: 3px 5px gray ;
+}
+
 
 #results{
     margin:1rem;   
