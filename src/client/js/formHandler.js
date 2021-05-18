@@ -13,6 +13,20 @@ function handleSubmit(e){
 
         console.log('search for: ' + searchText);
 
+        let fromDate = new Date(document.getElementById('dpFromDate').value);
+        console.log('From: ' + fromDate);
+
+        if(fromDate < new Date()){
+            throw "Arrival Date cannot be before tomorrow";
+        }
+
+        let toDate = new Date(document.getElementById('dpToDate').value);
+        console.log('To: ' + toDate);
+
+        if(toDate <= fromDate){
+            throw "Departure Date cannot be before or on same day as Arrival";
+        }
+
     } catch (error) {
         displayErrors(error);
     }

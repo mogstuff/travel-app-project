@@ -91,6 +91,18 @@ footer{
 }
 
 
+.label{
+    display:block;   
+    padding:0.5rem;
+}
+
+
+#datepickers-wrapper{
+   
+    padding:0.5rem;
+}
+
+
 @media (max-width: 760px) {
     #search-form{  
         max-width: 80%;
