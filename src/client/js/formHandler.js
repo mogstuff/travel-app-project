@@ -13,6 +13,14 @@ function handleSubmit(e){
 
         console.log('search for: ' + searchText);
 
+        let countryName = document.getElementById('countriesDD').value;
+
+        console.log('Selected Country is : ' + countryName);
+
+        if(countryName === 'none'){
+            throw "please select a country";
+        }
+        
         let fromDate = new Date(document.getElementById('dpFromDate').value);
         console.log('From: ' + fromDate);
 
@@ -32,6 +40,9 @@ function handleSubmit(e){
     }
 
 }
+
+
+
 
 
 function displayErrors(error) {

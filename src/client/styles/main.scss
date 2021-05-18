@@ -35,10 +35,10 @@ main{
     margin:1rem;
 }
 
-#search-form{
-  
-    display: flex;
+#search-form{  
+    display: grid;    
     padding:0.5rem;
+    grid-template-columns: repeat(1fr,2);
 }
 
 #search-text-wrapper{
@@ -47,7 +47,7 @@ main{
 
 #search_txt{
     padding:0.5rem;
-    width: 60vw;
+    width: auto;
 }
 
 #submit-container{
@@ -97,8 +97,11 @@ footer{
 }
 
 
-#datepickers-wrapper{
-   
+#datepickers-wrapper{   
+    padding:0.5rem;
+}
+
+#countriesList{
     padding:0.5rem;
 }
 

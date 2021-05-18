@@ -1,4 +1,5 @@
-import { handleSubmit } from './js/formHandler'
+import { handleSubmit } from './js/formHandler';
+import { loadCountries } from './js/countriesDropDown';
 
 import "./styles/main.scss"
 
@@ -10,7 +11,6 @@ const  setDatesOnLoad = () => {
     startDate.setDate(startDate.getDate() + 1);    
     startPicker.value =  startDate.toISOString().slice(0, 10);
 
-
    let endPicker = document.getElementById('dpToDate');
    let endDate = new Date();
    endDate.setDate(endDate.getDate() + 2);
@@ -18,8 +18,24 @@ const  setDatesOnLoad = () => {
 
 }
 
+
+
 setDatesOnLoad();
 
+loadCountries();
 
+const selectCountry = () => {
+    document.getElementById('countriesDD').addEventListener('change', () => {
 
-export { handleSubmit } 
+        let countryName = document.getElementById('countriesDD').value;
+
+        if(countryName != "none"){
+            document.getElementById('validation').innerHTML = '';
+        }
+        
+    });
+}
+
+selectCountry();
+
+export { handleSubmit , loadCountries, selectCountry } 
