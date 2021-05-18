@@ -17,15 +17,29 @@
             <section id="form">
                 <form id="search-form">
                     <div id="search-text-wrapper">
-                        <input id="search_txt" type="text" placeholder="enter location ...."
+                        <label for="search_txt" class="label">Destination</label>
+                        <input id="search_txt" name="search_txt" type="text" placeholder="enter location ...."
                             aria-label="search location">
                     </div>
+
+                    <div id="datepickers-wrapper">
+                        <div id="fromDate">
+                            <label for="dpFromDate" class="label">Arrival</label>
+                            <input type="date" name="dpFromDate" id="dpFromDate"  />
+                        </div>
+                        <div id="toDate" >
+                            <label for="dpToDate" class="label">Departure</label>
+                            <input type="date" name="dpToDate" id="dpToDate"/>
+                        </div>
+                    </div>
+
                     <div id="submit-container">
-                        <button id="search" class="search_button">
+                        <button id="search" class="search_button" onclick="return Client.handleSubmit(event)">
                             Search
                         </button>
                     </div>
                 </form>
+                <div id="validation"></div>
             </section>
             <section id="results">
                 Results here
