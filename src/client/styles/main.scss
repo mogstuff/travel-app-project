@@ -72,6 +72,17 @@ footer{
     text-align: center;
 }
 
+#validation{
+    padding:1rem;
+
+}
+
+.error{
+    color:red;
+    font-weight: bold;
+   margin-left:10px;
+}
+
 
 @media (max-width: 760px) {
     #search-form{  
