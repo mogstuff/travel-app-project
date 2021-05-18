@@ -17,11 +17,11 @@
             <section id="form">
                 <form id="search-form">
                     <div id="search-text-wrapper">
-                        <input id="search_txt" type="text" placeholder="enter location ...."
+                        <input id="search_txt" name="search_txt" type="text" placeholder="enter location ...."
                             aria-label="search location">
                     </div>
                     <div id="submit-container">
-                        <button id="search" class="search_button">
+                        <button id="search" class="search_button" onclick="return Client.handleSubmit(event)">
                             Search
                         </button>
                     </div>
