@@ -71,3 +71,18 @@ footer{
     color:whitesmoke;
     text-align: center;
 }
+
+
+@media (max-width: 760px) {
+    #search-form{  
+        max-width: 80%;
+        display: flex;
+        padding:0.5rem;
+        flex-direction: column;        
+    }
+    
+    #submit-container{
+      text-align: right;
+    }
+
+}
