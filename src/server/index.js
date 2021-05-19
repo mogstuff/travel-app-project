@@ -13,6 +13,8 @@ const { dependencies } = require('webpack');
 const geoNamesApiKey = process.env.GEONAMES_USERNAME;
 const weatherBitApiKey = process.env.WEATHERBIT_KEY;
 const pixabayApiKey = process.env.PIXABAY_KEY;
+const triposoApiKey = process.env.TRIPOSO_KEY;
+const triposoAccountID = process.env.TRIPOSO_ACCOUNTID;
 
 var json = {
     'title': 'test json response',
@@ -117,11 +119,15 @@ app.post('/travelinfo', async (req, res) => {
     travelData.imageData = pixabayImageData;
 
     // triposo
+    const distanceInMetres = 5000;
 
+    let triposoUrl = `https://www.triposo.com/api/20210317/poi.json?annotate=distance:${lat},${lng}&tag_labels=sightseeing&distance=<${distanceInMetres}&fields=id,name,score,intro,tag_labels&order_by=-score&account=${triposoAccountID}&token=${triposoApiKey}`;
+    console.log('TRIPOSO: ' + triposoUrl);
+    
+    const triposoResponse = await fetch(triposoUrl);
+    const triposoData = await triposoResponse.json();
 
-    // opentrip
-
-
+    travelData.sightSeeingData = triposoData;
 
     res.send(travelData);
 
