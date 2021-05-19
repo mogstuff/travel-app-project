@@ -9,7 +9,9 @@ dotenv.config();
 
 const express = require('express');
 const mockAPIResponse = require('./mockAPI.js');
+const { dependencies } = require('webpack');
 const geoNamesApiKey = process.env.GEONAMES_USERNAME;
+const weatherBitApiKey = process.env.WEATHERBIT_KEY;
 
 var json = {
     'title': 'test json response',
@@ -26,7 +28,7 @@ app.use(cors())
 app.use(bodyParser.json())
 // to use url encoded values
 app.use(bodyParser.urlencoded({
-  extended: true
+    extended: true
 }))
 
 app.use(express.static('dist'))
@@ -58,11 +60,49 @@ app.post('/travelinfo', async (req, res) => {
     const geonamesResponse = await fetch(geonamesUrl);
     const geonamesData = await geonamesResponse.json();
     const geoNamesCoordinates = geonamesData.geonames[0];
+    travelData.geoNamesCoordinates = geoNamesCoordinates;
 
-    res.send(geoNamesCoordinates);
-    
+    const lat = geonamesData.geonames[0].lat;
+    const lng = geonamesData.geonames[0].lng;
+
     // weatherbit to get weather data
+    let today = new Date();
+    let arrivalDate = new Date(req.body.arrivalDate);
+    let departureDate = new Date(req.body.departureDate);
+    travelData.arrivalDate = arrivalDate;
+    travelData.departureDate = departureDate;
 
+    // add countdown field
+    let diffInTime = arrivalDate.getTime() - today.getTime();
+    let daysUntilTrip = Math.round(Math.abs(diffInTime/(1000*60*60*24)));
+    travelData.daysUntilTrip = daysUntilTrip; 
+
+
+    // > 15 days away then add start_day and end_day
+    // https://www.weatherbit.io/api/climate-normals
+
+    let weatherBitUrl = `https://api.weatherbit.io/v2.0/current?key=${weatherBitApiKey}&lang=en&lat=${lat}&lon=${lng}`;
+
+    if (daysUntilTrip > 15) {
+       
+        let arrivalMonth =   ("0" + (arrivalDate.getMonth() + 1)).slice(-2);
+        let arrivalDayOfMonth = ("0" + arrivalDate.getDate()).slice(-2);
+        let arrive = `${arrivalMonth}-${arrivalDayOfMonth}`; 
+
+        let departureMonth =   ("0" + (departureDate.getMonth() + 1)).slice(-2);
+        let departureDayOfMonth = ("0" + departureDate.getDate()).slice(-2);
+        let leave =  `${departureMonth}-${departureDayOfMonth}`; 
+
+        weatherBitUrl = `https://api.weatherbit.io/v2.0/normals?lat=${lat}&lon=${lng}&start_day=${arrive}&end_day=${leave}&tp=monthly&key=${weatherBitApiKey}`;
+
+    }
+
+    travelData.weatherBitUrl = weatherBitUrl;
+
+    const weatherBitResponse = await fetch(weatherBitUrl);
+    const weatherBitData = await weatherBitResponse.json();
+
+    travelData.weatherData = weatherBitData;
 
     // pixabay to get image
 
@@ -74,11 +114,11 @@ app.post('/travelinfo', async (req, res) => {
 
 
 
-    travelData = {
-        lng : req.body.lng,
-        lat : req.body.lat,
-        countryName : req.body.countryName
-    }
+    // travelData = {
+    //     lng : req.body.lng,
+    //     lat : req.body.lat,
+    //     countryName : req.body.countryName
+    // }
 
     res.send(travelData);
 

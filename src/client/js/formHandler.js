@@ -38,7 +38,9 @@ function handleSubmit(e){
         // send users selections to server method /travelinfo
         let userData = {
             city: searchText,
-            countryName: countryName
+            countryName: countryName,
+            arrivalDate : fromDate,
+            departureDate : toDate
         };
 
        postUserData('http://localhost:8081/travelinfo', userData);
