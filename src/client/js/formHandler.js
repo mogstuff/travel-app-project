@@ -35,13 +35,19 @@ function handleSubmit(e){
             throw "Departure Date cannot be before or on same day as Arrival";
         }
 
+        // send users selections to server method /travelinfo
+        let userData = {
+            city: searchText,
+            countryName: countryName
+        };
+
+       postUserData('http://localhost:8081/travelinfo', userData);
+
     } catch (error) {
         displayErrors(error);
     }
 
 }
-
-
 
 
 
@@ -56,5 +62,40 @@ function displayErrors(error) {
 }
 
 
+const postUserData = async (url = '', data = {}) => {
 
-export { handleSubmit, displayErrors }
+
+    const response = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify(data)
+
+    });
+
+    try {
+        
+        const data = await response.json();
+        console.info('response from posting data to Api: ');
+        console.log(data);
+
+        updateUI(data);
+        return data;
+
+    } catch (error) {
+        displayErrors(error);
+        console.error('error posting data to API', error);
+    }
+
+}
+
+
+const updateUI = async (result) => {
+    let display = document.getElementById('results');
+    display.innerText = JSON.stringify(result);
+}
+
+export { handleSubmit, displayErrors, postUserData, updateUI }

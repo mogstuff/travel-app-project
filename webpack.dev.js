@@ -11,6 +11,9 @@ module.exports = {
     },
     mode: 'development',
     devtool: 'source-map',
+    devServer:{
+        port: 5000
+    },
     module: {
         rules: [
             {
