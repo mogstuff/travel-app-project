@@ -12,6 +12,7 @@ const mockAPIResponse = require('./mockAPI.js');
 const { dependencies } = require('webpack');
 const geoNamesApiKey = process.env.GEONAMES_USERNAME;
 const weatherBitApiKey = process.env.WEATHERBIT_KEY;
+const pixabayApiKey = process.env.PIXABAY_KEY;
 
 var json = {
     'title': 'test json response',
@@ -105,7 +106,15 @@ app.post('/travelinfo', async (req, res) => {
     travelData.weatherData = weatherBitData;
 
     // pixabay to get image
+    let pixabayUrl = `https://pixabay.com/api/?key=${pixabayApiKey}&lang=en&q=${locationSearchString}&category=places`;
 
+    const pixaBayResponse = await fetch(pixabayUrl);
+    const pixabayImageData = await pixaBayResponse.json();
+
+    console.log("PIXABAY: " + pixabayUrl);
+
+    travelData.pixabayUrl = pixabayUrl;
+    travelData.imageData = pixabayImageData;
 
     // triposo
 
@@ -113,12 +122,6 @@ app.post('/travelinfo', async (req, res) => {
     // opentrip
 
 
-
-    // travelData = {
-    //     lng : req.body.lng,
-    //     lat : req.body.lat,
-    //     countryName : req.body.countryName
-    // }
 
     res.send(travelData);
 
