@@ -36,13 +36,14 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('dist'))
 
-console.log(JSON.stringify(mockAPIResponse))
+//console.log(JSON.stringify(mockAPIResponse));
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
 app.get('/test', function (req, res) {
+    console.log('test method running on server');
     res.json(mockAPIResponse);
 })
 

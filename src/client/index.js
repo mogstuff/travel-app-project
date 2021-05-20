@@ -1,5 +1,6 @@
 import { handleSubmit } from './js/formHandler';
 import { loadCountries } from './js/countriesDropDown';
+import  { testSubmit } from './js/testFormHandler';
 
 import "./styles/main.scss"
 
@@ -17,8 +18,6 @@ const  setDatesOnLoad = () => {
    endPicker.value = endDate.toISOString().slice(0, 10);
 
 }
-
-
 
 setDatesOnLoad();
 
@@ -38,4 +37,4 @@ const selectCountry = () => {
 
 selectCountry();
 
-export { handleSubmit , loadCountries, selectCountry } 
+export { handleSubmit , loadCountries, selectCountry , testSubmit } 
