@@ -113,7 +113,7 @@ app.post('/travelinfo', async (req, res) => {
     const pixaBayResponse = await fetch(pixabayUrl);
     const pixabayImageData = await pixaBayResponse.json();
 
-    console.log("PIXABAY: " + pixabayUrl);
+  //  console.log("PIXABAY: " + pixabayUrl);
 
     travelData.pixabayUrl = pixabayUrl;
     travelData.imageData = pixabayImageData;
@@ -122,7 +122,7 @@ app.post('/travelinfo', async (req, res) => {
     const distanceInMetres = 5000;
 
     let triposoUrl = `https://www.triposo.com/api/20210317/poi.json?annotate=distance:${lat},${lng}&tag_labels=sightseeing&distance=<${distanceInMetres}&fields=id,name,score,intro,tag_labels&order_by=-score&account=${triposoAccountID}&token=${triposoApiKey}`;
-    console.log('TRIPOSO: ' + triposoUrl);
+   // console.log('TRIPOSO: ' + triposoUrl);
     
     const triposoResponse = await fetch(triposoUrl);
     const triposoData = await triposoResponse.json();

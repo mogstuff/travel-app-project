@@ -11,25 +11,25 @@ function handleSubmit(e){
             throw "search cannot be null";
         }
 
-        console.log('search for: ' + searchText);
+      //  console.log('search for: ' + searchText);
 
         let countryName = document.getElementById('countriesDD').value;
 
-        console.log('Selected Country is : ' + countryName);
+    //    console.log('Selected Country is : ' + countryName);
 
         if(countryName === 'none'){
-            throw "please select a country";
+            throw "please select a country";  
         }
         
         let fromDate = new Date(document.getElementById('dpFromDate').value);
-        console.log('From: ' + fromDate);
+//console.log('From: ' + fromDate);
 
         if(fromDate < new Date()){
             throw "Arrival Date cannot be before tomorrow";
         }
 
         let toDate = new Date(document.getElementById('dpToDate').value);
-        console.log('To: ' + toDate);
+   //     console.log('To: ' + toDate);
 
         if(toDate <= fromDate){
             throw "Departure Date cannot be before or on same day as Arrival";
@@ -81,8 +81,8 @@ const postUserData = async (url = '', data = {}) => {
     try {
         
         const data = await response.json();
-        console.info('response from posting data to Api: ');
-        console.log(data);
+        // console.info('response from posting data to Api: ');
+        // console.log(data);
 
         updateUI(data);
         return data;
@@ -96,8 +96,56 @@ const postUserData = async (url = '', data = {}) => {
 
 
 const updateUI = async (result) => {
+
+    console.log(result);
+
+    console.log(`Arrival Date: ${result.arrivalDate}`);
+    console.log(`Departure Date: ${result.departureDate}`);
+    console.log(`Days Until Trip: ${result.daysUntilTrip}`);   
+
+    console.log('geoNamesCoordinates: ');
+    console.log(result.geoNamesCoordinates.countryName);
+
+    console.log('imageData: ');
+    console.log(result.imageData);
+
+    console.log('sightSeeingData: ');
+    console.log(result.sightSeeingData);
+
+    console.log('weatherData: ');
+    console.log(result.weatherData);
+
     let display = document.getElementById('results');
-    display.innerText = JSON.stringify(result);
+  //  display.innerText = JSON.stringify(result);
+
+    let imageWrapperDiv = document.createElement('div');
+    imageWrapperDiv.classList.add('img-wrapper');
+    let mainImage = document.createElement('img');
+    let imgSrc = result.imageData.hits[0].webformatURL;   
+    imageWrapperDiv.appendChild(mainImage);
+    mainImage.src = imgSrc;
+    display.appendChild(imageWrapperDiv);
+
+   
+
+let    flagImgHtml = `<img
+    src="https://flagcdn.com/192x144/${result.geoNamesCoordinates.countryCode.toLowerCase()}.png"
+    srcset="https://flagcdn.com/192x144/${result.geoNamesCoordinates.countryCode.toLowerCase()}.png 2x,
+      https://flagcdn.com/192x144/${result.geoNamesCoordinates.countryCode.toLowerCase()}.png 3x"
+    width="192"
+    height="144"
+    alt="${result.geoNamesCoordinates.countryName}">`;
+
+    console.log('FLAG IMAGE URL: ');
+    console.log(flagImgHtml);
+
+    let flagWrapperDiv = document.createElement('div');
+    flagWrapperDiv.classList.add('flag-wrapper');
+    flagWrapperDiv.innerHTML = flagImgHtml;
+
+    display.appendChild(flagWrapperDiv);
+
+
 }
 
 export { handleSubmit, displayErrors, postUserData, updateUI }
