@@ -16,14 +16,18 @@ body{
 }
 
 header{
-    background-color: royalblue;
+    background-color: darkblue;
     display: flex;
     justify-content: center;
     padding:1em;
+     background-image: url('../media/world-map.png');   
+    background-blend-mode:soft-light;
+    background-size:cover;
 }
 
 h1{
     color:whitesmoke;
+    text-align: center;
 }
 
 main{
@@ -73,10 +77,13 @@ main{
 
 
 footer{
-    background-color: royalblue;
+    background-color: darkblue;
     height:100px;
     color:whitesmoke;
     text-align: center;
+    background-image: url('../media/world-map.png');   
+    background-blend-mode:soft-light;
+    background-size:cover;
 }
 
 #validation{
