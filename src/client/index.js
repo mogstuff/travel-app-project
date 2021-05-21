@@ -2,7 +2,8 @@ import { handleSubmit } from './js/formHandler';
 import { loadCountries } from './js/countriesDropDown';
 import  { testSubmit } from './js/testFormHandler';
 
-import "./styles/main.scss"
+import "./styles/main.scss";
+import "./styles/slideshow.scss";
 
 const  setDatesOnLoad = () => {
 
