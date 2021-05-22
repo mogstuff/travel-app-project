@@ -9,9 +9,9 @@ const updateUI = async (result) => {
   addFlagImage(result, 'results');
 
  addWeather(result, 'results');
- 
- addSlideShow(result, 'results');
 
+ addSlideShow(result, 'results');
+ 
   addSightSeeingDiv(result, 'results');  
 
 }
@@ -73,16 +73,20 @@ const addWeather = (result, elementId) => {
   div.appendChild(h3);
 
   let temperatures = document.createElement('div');
+  temperatures.classList.add('temperatures-wrapper');
 
   let temp = document.createElement('div');
+  temp.classList.add('temperature');
   temp.innerText = `Temp: ${result.weatherData.data[0].temp} °C`;
   temperatures.appendChild(temp);
 
   let min_temp = document.createElement('div');
+  min_temp.classList.add('temperature');
   min_temp.innerText = `Min: ${result.weatherData.data[0].min_temp} °C`;
   temperatures.appendChild(min_temp);
 
   let max_temp = document.createElement('div');
+  max_temp.classList.add('temperature');
   max_temp.innerText = `Max: ${result.weatherData.data[0].max_temp} °C`;
   temperatures.appendChild(max_temp);
 
@@ -114,6 +118,7 @@ const addSightSeeingDiv = (result, elementId) => {
   for (const x of result.sightSeeingData.results) {
 
     let sightDiv = document.createElement('div');
+    sightDiv.classList.add('point-of-interest');
 
     let h4 = document.createElement('h4');
     h4.innerText = x.name;

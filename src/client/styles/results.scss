@@ -1,0 +1,79 @@
+
+#results{
+    margin:1rem;   
+    min-height:600px;    
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 0.5rem;
+
+    grid-template-rows: auto auto auto auto;
+   
+}
+
+.trip-details-headings{
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+}
+
+.trip-details-headings h2{
+
+}
+
+
+.trip-details-headings h3{
+
+}
+
+#flag{
+    
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+}
+
+#flag h3{
+    
+}
+
+
+.flag-wrapper{
+   
+}
+
+#weather-outlook{
+  
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+}
+
+.temperatures-wrapper{
+
+}
+
+.temperature{
+
+}
+
+
+
+
+#points-of-interest-wrapper{   
+    grid-column: 1 / span 2;
+    grid-row: 4 / span 1;
+}
+
+#points-of-interest-wrapper h3{
+
+}
+
+.point-of-interest{
+
+}
+
+.point-of-interest h4{
+
+}
+
+.point-of-interest p{
+
+}

@@ -42,7 +42,8 @@ main{
 #search-form{  
     display: grid;    
     padding:0.5rem;
-    grid-template-columns: repeat(1fr,2);
+    grid-template-columns: 2fr 2fr 1fr 1fr 1fr;
+    grid-gap: 0.5rem;
 }
 
 #search-text-wrapper{
@@ -51,17 +52,23 @@ main{
 
 #search_txt{
     padding:0.5rem;
-    width: auto;
+    width: 90%;
 }
 
 #submit-container{
     padding:0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .search_button{
     background-color: orange;
     padding:0.5rem;
-    box-shadow: 3px 5px gray ;
+    box-shadow: 1px 3px gray ;
+    width:80%;
+    margin-top: 20px;
 }
 
 .search_button:hover{
@@ -70,10 +77,6 @@ main{
 }
 
 
-#results{
-    margin:1rem;   
-    min-height:600px;    
-}
 
 
 footer{
@@ -110,10 +113,66 @@ footer{
 
 #countriesList{
     padding:0.5rem;
+    max-width: 80%;
+   
+}
+
+#countriesDD{
+    padding:0.5rem;
+    max-width: 100%;
+}
+
+
+#dpFromDate{
+    padding:0.5rem;
+    max-width: 100%;
+}
+
+#dpToDate{
+    padding:0.5rem;
+    max-width: 100%;
+}
+
+
+
+
+@media (max-width:1024px){
+    #search-form{       
+        display: grid;    
+        padding:0.5rem;
+        grid-template-columns: auto auto auto;
+    }
+
+    #search-text-wrapper{
+    grid-column: 1 / span 1;
+    }
+
+    #countriesList{
+        grid-column: 2 / span 1;
+    }
+
+    #fromDate{
+        grid-column: 1 / span 1;
+    }
+
+    #toDate{
+        grid-column: 2 / span 1;
+    }
+    
+    #submit-container{
+        grid-column: 3 / span 1;
+    }
 }
 
 
 @media (max-width: 760px) {
+
+    h1{
+        color:whitesmoke;
+        text-align: center;
+    }
+
+
     #search-form{  
         max-width: 80%;
         display: flex;

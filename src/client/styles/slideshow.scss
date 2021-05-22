@@ -1,9 +1,7 @@
 /* Slideshow container */
-.slideshow-container {
-    width: 640px;
-    height: 426px;
-    position: relative;
-    margin: auto;
+.slideshow-container {   
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 1;
   }
   
   /* Hide the images by default */
