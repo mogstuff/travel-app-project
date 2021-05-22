@@ -19,11 +19,10 @@ const addSlideShow = (result, elemendId) => {
         let slideDiv = document.createElement('div');
         slideDiv.classList.add('trip-slides');
         slideDiv.classList.add('fade');       
-        let img = document.createElement('img');
-        img.src = slide.webformatURL;
-        img.classList.add('slide-img');
-        slideDiv.appendChild(img);
-       slideDiv.style.display = "none";
+       
+        slideDiv.style.display = "none";
+        slideDiv.style = `background-image: url(${slide.webformatURL}); background-size:cover`;
+
         container.appendChild(slideDiv);
     }
 
