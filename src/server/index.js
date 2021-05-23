@@ -43,13 +43,13 @@ app.get('/', function (req, res) {
 })
 
 app.get('/test', function (req, res) {
-    console.log('test method running on server');
+  //  console.log('test method running on server');
     res.json(mockAPIResponse);
 })
 
 // designates what port the app will listen to for incoming requests
 app.listen(8081, function () {
-    console.log('Weather app listening on port 8081!');
+  //  console.log('Weather app listening on port 8081!');
 })
 
 
@@ -123,15 +123,14 @@ app.post('/travelinfo', async (req, res) => {
   }
 
   travelData.imageData = pixabayImageData;
-   // travelData.pixabayUrl = pixabayUrl;
+  
     
 
-    // triposo
+    // triposo api - get points of interest within 5km
     const distanceInMetres = 5000;
 
     let triposoUrl = `https://www.triposo.com/api/20210317/poi.json?annotate=distance:${lat},${lng}&tag_labels=sightseeing&distance=<${distanceInMetres}&fields=id,name,score,intro,tag_labels&order_by=-score&account=${triposoAccountID}&token=${triposoApiKey}`;
-   // console.log('TRIPOSO: ' + triposoUrl);
-    
+      
     const triposoResponse = await fetch(triposoUrl);
     const triposoData = await triposoResponse.json();
 
@@ -141,3 +140,7 @@ app.post('/travelinfo', async (req, res) => {
 
 });
 
+
+module.exports = {
+    app
+}

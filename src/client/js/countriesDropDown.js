@@ -28,8 +28,7 @@ function populateDropDown(){
     let dd = document.getElementById('countriesDD');
     let countries = JSON.parse(localStorage.getItem('countriesList'));
 
-    Object.entries(countries).forEach((x) => {
-     //   console.log(x[1].name);
+    Object.entries(countries).forEach((x) => { 
 
         let countryName = x[1].name;
         let option = document.createElement('option');
