@@ -141,7 +141,7 @@ footer{
 
 }
 
-.delete-trip-button{
+#delete-trip-button{
     margin-right:3vw;
 
     background-color: orange;
@@ -151,10 +151,29 @@ footer{
     margin-top: 20px;
 }
 
-.delete-trip-button:hover{
+#delete-trip-button:hover{
     background-color: red;
 }
 
+
+#print-trip-button{
+    margin-right:3vw;
+
+    background-color: orange;
+    padding:0.5rem;
+    box-shadow: 1px 3px gray ;
+    width:104px;
+    margin-top: 20px;
+}
+
+#print-trip-button:hover{
+    background-color: yellowgreen;
+}
+
+#buttons{
+    display: flex;
+    justify-content: flex-end;
+}
 
 
 @media (max-width:1024px){
@@ -206,3 +225,12 @@ footer{
     }
 
 }
+
+
+
+@media print {
+    .noprint {
+       visibility: hidden;
+    }
+ }
+

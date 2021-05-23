@@ -12,7 +12,7 @@ let tripDataJSON = JSON.parse(tripData);
 
 await updateUI(tripDataJSON);
 
-addDeleteButton();
+//addDeleteButton();
 }
 
 function deleteTripData(){
@@ -40,12 +40,12 @@ function addDeleteButton(){
 div.classList.add('delete-button-wrapper');
 let deleteButton = document.createElement('button');
 deleteButton.innerText = "Delete Trip";
-deleteButton.classList.add('delete-trip-button');
+deleteButton.id = 'delete-trip-button';
 div.appendChild(deleteButton);
 
 deleteButton.addEventListener('click', function(){ deleteTripData(); });
 
-document.getElementById('form').appendChild(div);
+document.getElementById('buttons').appendChild(div);
 }
 
 

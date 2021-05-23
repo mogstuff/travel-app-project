@@ -17,6 +17,8 @@ const updateUI = async (result) => {
 
   addDeleteButton();
 
+  addPrintButton();
+
 }
 
 const addHeadings = (result, elementId) => {
@@ -142,6 +144,35 @@ const addSightSeeingDiv = (result, elementId) => {
   
 }
 
+
+function addPrintButton(){  
+
+  let div = document.createElement('div');
+div.classList.add('print-button-wrapper');
+let printButton = document.createElement('button');
+printButton.innerText = "Print Trip";
+printButton.id = 'print-trip-button';
+div.appendChild(printButton);
+
+printButton.addEventListener('click', function(){ printTrip(); });
+
+document.getElementById('buttons').appendChild(div);
+}
+
+
+function printTrip() {
+
+ var divContents = document.getElementById("results").innerHTML;
+  var a = window.open('', '', 'height=500, width=400');
+  a.document.title = 'Print Trip Details';
+  a.document.write('<html>');
+   a.document.write('<body >');
+ 
+  a.document.write(divContents);
+   a.document.write('</body></html>');
+   a.document.close();
+  a.print();
+}
 
 
 export { updateUI }
