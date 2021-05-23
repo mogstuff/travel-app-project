@@ -1,4 +1,5 @@
 import { addSlideShow } from './slideShowHandler';
+import { addDeleteButton } from './localStorageHandler';
 
 const updateUI = async (result) => {
 
@@ -13,6 +14,8 @@ const updateUI = async (result) => {
  addSlideShow(result, 'results');
  
   addSightSeeingDiv(result, 'results');  
+
+  addDeleteButton();
 
 }
 

@@ -134,6 +134,27 @@ footer{
 }
 
 
+.delete-button-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.delete-trip-button{
+    margin-right:3vw;
+
+    background-color: orange;
+    padding:0.5rem;
+    box-shadow: 1px 3px gray ;
+    width:104px;
+    margin-top: 20px;
+}
+
+.delete-trip-button:hover{
+    background-color: red;
+}
+
 
 
 @media (max-width:1024px){
