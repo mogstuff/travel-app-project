@@ -1,6 +1,7 @@
 import { handleSubmit } from './js/formHandler';
 import { loadCountries } from './js/countriesDropDown';
 import  { testSubmit } from './js/testFormHandler';
+import  { loadLatestTripData } from './js/localStorageHandler';
 
 import "./styles/main.scss";
 import "./styles/results.scss";
@@ -38,5 +39,7 @@ const selectCountry = () => {
 }
 
 selectCountry();
+
+loadLatestTripData();
 
 export { handleSubmit , loadCountries, selectCountry , testSubmit } 

@@ -68,6 +68,8 @@ const postUserData = async (url = '', data = {}) => {
         // console.info('response from posting data to Api: ');
         // console.log(data);
 
+        localStorage.setItem('tripData', JSON.stringify(data));
+
         updateUI(data);
         return data;
 
