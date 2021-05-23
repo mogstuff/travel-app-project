@@ -112,12 +112,19 @@ app.post('/travelinfo', async (req, res) => {
     let pixabayUrl = `https://pixabay.com/api/?key=${pixabayApiKey}&lang=en&q=${locationSearchString}&category=places`;
 
     const pixaBayResponse = await fetch(pixabayUrl);
-    const pixabayImageData = await pixaBayResponse.json();
+    let pixabayImageData = await pixaBayResponse.json();
 
   //  console.log("PIXABAY: " + pixabayUrl);
 
-    travelData.pixabayUrl = pixabayUrl;
-    travelData.imageData = pixabayImageData;
+  if(pixabayImageData.totalHits == 0){
+    pixabayUrl = `https://pixabay.com/api/?key=${pixabayApiKey}&lang=en&q=${req.body.countryName}&category=places`;
+    let pixaBayResponseForCountry = await fetch(pixabayUrl);
+    pixabayImageData = await pixaBayResponseForCountry.json();
+  }
+
+  travelData.imageData = pixabayImageData;
+   // travelData.pixabayUrl = pixabayUrl;
+    
 
     // triposo
     const distanceInMetres = 5000;
