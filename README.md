@@ -123,7 +123,53 @@ Additional features:
 - Webpack has been employed to optimise performance
 
 - Unit tests including endpoint testing have been employed using the Jest testing framework
-- 
+
+### Installing and Running the App Locally
+
+Please run the following scripts to run the project:
+
+Install all necessary modules
+
+```sh
+
+npm i
+
+```
+
+To run the app locally you will need to run the server on the port 8081 as specified in src/server/index.js
+
+Create a Production build by running:
+
+```sh
+
+npm run build-prod 
+
+```
+
+
+To launch the server run the command: 
+
+
+```sh
+
+npm start 
+
+```
+
+
+The client runs on port 5000 as specified in webpack.dev.js.
+
+To launch the dev server please run:
+
+```sh
+
+npm run build-dev 
+
+```
+
+
+
+
 ### Deployment 
   
 

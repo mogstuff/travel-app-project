@@ -48,9 +48,11 @@ app.get('/test', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-  //  console.log('Weather app listening on port 8081!');
+app.listen(port, function () {
+   console.log('Savvy Travel app listening on port: ' + port );
 })
+
+
 
 
 // chain fetch requests to populate travelData object
