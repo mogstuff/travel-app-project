@@ -39,6 +39,8 @@ function handleSubmit(e) {
             departureDate: toDate
         };
 
+        showPreloader();
+
         postUserData('http://localhost:8081/travelinfo', userData);
 
     } catch (error) {
@@ -79,5 +81,23 @@ const postUserData = async (url = '', data = {}) => {
     }
 
 }
+
+
+function showPreloader() {
+
+    let results = document.getElementById('results');
+    results.innerHTML = '';
+    results.scrollIntoView({ behavior: "smooth" });
+
+    let loader = document.createElement('div');
+    loader.classList.add('loader');
+    results.appendChild(loader);
+
+    let heading = document.createElement('div');
+    heading.innerHTML = '<p>.... processing data</p>';
+    results.appendChild(heading);
+
+}
+
 
 export { handleSubmit, postUserData }

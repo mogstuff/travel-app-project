@@ -3,7 +3,10 @@ import { addDeleteButton } from './localStorageHandler';
 
 const updateUI = async (result) => {
 
+  document.getElementById('buttons').innerHTML = '';
+
   let display = document.getElementById('results');
+  display.innerHTML = '';
 
   addHeadings(result, 'results');
 
