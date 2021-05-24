@@ -108,6 +108,7 @@ Additional features:
 - Images from Pixabay are rendered in an animated slideshow
 
 - Points of Interest within 5km of the location have been included via the https://www.triposo.com api  
+- A list of countries is retreived via the http://api.geonames.org and added to local storage, this is to prevent fuzzy search terms, for example entering Paris may also bring up Paris, Texas, USA whereas Paris France is more specific.
 
 ### Features  
 
