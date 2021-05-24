@@ -156,6 +156,11 @@ npm start
 
 ```
 
+You should see the following message in your terminal:
+
+Savvy Travel app listening on port: 8081
+
+
 
 The client runs on port 5000 as specified in webpack.dev.js.
 
