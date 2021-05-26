@@ -10,11 +10,11 @@ dotenv.config();
 const express = require('express');
 const mockAPIResponse = require('./mockAPI.js');
 const { dependencies } = require('webpack');
-const geoNamesApiKey = "mogstuff";
-const weatherBitApiKey = "b5663b9763bb44b4a182ee32470f9daa";
-const pixabayApiKey = "9604096-d7fbf8476fdaa2199d5d25e9f";
-const triposoApiKey = "y00xudtgcocg71qexztoxjig7iw3uauf";
-const triposoAccountID = "K7GUMPX3";
+const geoNamesApiKey = "";
+const weatherBitApiKey = "";
+const pixabayApiKey = "";
+const triposoApiKey = "";
+const triposoAccountID = "";
 
 var json = {
     'title': 'test json response',
